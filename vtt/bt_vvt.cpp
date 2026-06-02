@@ -1,63 +1,22 @@
-#include <iostream>
-#include <string>
+#include<iostream>
+#include<string>
 using namespace std;
 
-struct node
+struct Node
 {
-    int val;
-    node *next;
+    string masv;
+    string hoten;
+    Node* next;
 };
-void insertnumber(node *&f, int nb)
-{
-    node *newnode = new node;
-    newnode->val = nb;
-    newnode->next = f;
-    f = newnode;
+
+Node* taoNode(string a, string b){
+    Node* newNode = new Node;
+    newNode->hoten=a;
+    newNode->masv=b;
+    return newNode;
 }
-void display(node *f)
-{
-    node *p = f;
-    while (p != NULL)
-    {
-        cout << p->val << "    ";
-        p = p->next;
-    }
-    cout << endl;
-}
-int main()
-{
-    node *f = NULL;
-    string cmd;
-    while (true)
-    {
-        cout << "-> ";
-        cin >> cmd;
-        if (cmd == "insert")
-        {
-            int nb;
-            cin >> nb;
-            insertnumber(f, nb);
-        }
-        else if (cmd == "display")
-        {
-            if (f == NULL)
-            {
-                cout << "Danh sach rong!" << endl;
-            }
-            else
-                display(f);
-        }
-        else if (cmd == "finish")
-        {
-            cout<<"Bye";
-            break;
-        }
-        else
-        {
-            cout << "Nhap lai (insert/display/finish)!"<<endl;
-            cout<<"Ex: insert 10";
-            cout << endl;
-        }
-    }
-    return 0;
+void chendau(Node* &first, string a, string b){
+    Node* temp = taoNode(a,b);
+    temp=first->next;
+    first = temp;
 }
